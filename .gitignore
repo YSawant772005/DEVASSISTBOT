@@ -1,0 +1,30 @@
+# --- Secrets ---------------------------------------------------------------
+# Never commit real configuration; .env.example files are the templates.
+.env
+.env.*
+!.env.example
+
+# --- Python ----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+backend/.venv/
+venv/
+
+# --- Node / Vite -----------------------------------------------------------
+node_modules/
+frontend/dist/
+frontend/dist-ssr/
+*.local
+
+# --- Editors / OS ----------------------------------------------------------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# --- Logs ------------------------------------------------------------------
+*.log
