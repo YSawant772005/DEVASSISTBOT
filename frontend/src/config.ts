@@ -7,7 +7,7 @@
 
 const rawApiBase = (import.meta.env.VITE_API_BASE_URL as string | undefined)?.trim()
 
-export const API_BASE_URL = (rawApiBase || 'http://localhost:8000').replace(/\/+$/, '')
+export const API_BASE_URL = (rawApiBase || '').replace(/\/+$/, '')
 
 const rawWsUrl = (import.meta.env.VITE_WS_URL as string | undefined)?.trim()
 

@@ -447,3 +447,41 @@ $env:PYTHONPATH = (Get-Location).Path
 | Port 5173 already in use | Vite uses `strictPort`; stop the other process or change the port and update `FRONTEND_ORIGIN`. |
 | `--workers 2` gives empty listings | Don't. The index is per-process; use a single worker. |
 | Old documents still listed | The index is in memory; delete them in the UI or restart the backend. |
+
+---
+
+## Knowledge Bytes
+
+A 20-part guided learning trail lives in [`knowledge bytes/`](knowledge%20bytes/). Each
+document is a short read (roughly 45 seconds per byte) grounded in the actual source
+files listed inside it, with cross-links between documents. Topics the repository does
+not implement (cart, checkout, orders, wishlist, reviews, admin, IIS) are documented
+explicitly as absences, mapped to the closest implemented equivalent — nothing is
+invented.
+
+| # | Document | Covers |
+|---|----------|--------|
+| 00 | [Project architecture](knowledge%20bytes/00-project-architecture.md) | Big picture: Vue 3 + FastAPI RAG chatbot, component map, request topology |
+| 01 | [Project structure](knowledge%20bytes/01-project-structure.md) | Directory layout of backend and frontend, what lives where |
+| 02 | [Application startup and request flow](knowledge%20bytes/02-application-startup-and-request-flow.md) | Lifespan, routing, the `/ws/chat` streaming protocol |
+| 03 | [Data layer and database](knowledge%20bytes/03-data-layer-and-database.md) | In-memory FAISS store, embeddings, rebuild-on-delete (no DB) |
+| 04 | [Models and viewmodels](knowledge%20bytes/04-models-and-viewmodels.md) | Pydantic schemas, TS types, store state shapes |
+| 05 | [Product catalog](knowledge%20bytes/05-product-catalog.md) | *No catalog exists* — the document registry is the real equivalent |
+| 06 | [Product details and variants](knowledge%20bytes/06-product-details-and-variants.md) | *Absent* — document detail (chunk metadata, sources panel) |
+| 07 | [Search, filtering, sorting, pagination](knowledge%20bytes/07-search-filtering-sorting-pagination.md) | *Absent as e-commerce* — retrieval ranking, gallery/list filtering |
+| 08 | [Cart and session management](knowledge%20bytes/08-cart-and-session-management.md) | *No cart* — session-only chat state and the busy/queue model |
+| 09 | [Checkout and coupons](knowledge%20bytes/09-checkout-and-coupons.md) | *Absent* — the question-send pipeline end to end |
+| 10 | [Authentication and authorization](knowledge%20bytes/10-authentication-and-authorization.md) | *None* — CORS origin allowlist, server-side key handling |
+| 11 | [Orders and order history](knowledge%20bytes/11-orders-and-order-history.md) | *Absent* — in-memory conversation history |
+| 12 | [Wishlist](knowledge%20bytes/12-wishlist.md) | *Absent* — localStorage theme as the only persistence |
+| 13 | [Reviews and moderation](knowledge%20bytes/13-reviews-and-moderation.md) | *No reviews* — policy + prompt topic moderation, untrusted context |
+| 14 | [Admin dashboard and management](knowledge%20bytes/14-admin-dashboard-and-management.md) | *No admin* — document management UI and `/health` diagnostics |
+| 15 | [Frontend views, JavaScript, CSS](knowledge%20bytes/15-frontend-views-javascript-css.md) | Vue components, Pinia stores, Tailwind styling |
+| 16 | [Validation, security, and error handling](knowledge%20bytes/16-validation-security-and-error-handling.md) | Validation map, error envelopes, implemented vs. missing controls |
+| 17 | [Contact, newsletter, and static pages](knowledge%20bytes/17-contact-newsletter-and-static-pages.md) | *Absent* — welcome page, prompt gallery, settings dialog, HTML shell |
+| 18 | [Testing and verification](knowledge%20bytes/18-testing-and-verification.md) | Backend pytest (fakes + `real_model`), frontend Vitest, integration script |
+| 19 | [IIS deployment and troubleshooting](knowledge%20bytes/19-iis-deployment-and-troubleshooting.md) | *IIS not applicable* — uvicorn/Vite ports, CORS, cloudflared tunnels, playbook |
+
+Suggested entry points: newcomers start at [00](knowledge%20bytes/00-project-architecture.md)
+and follow the "Builds on" chain; developers fixing a specific area jump straight to the
+matching document via the table above.
